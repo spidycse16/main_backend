@@ -18,6 +18,7 @@ class OrderController extends Controller
 
         $shopId = $request->input('shop_id');
         $items = $request->input('items');
+        $quantity=$request->input('quantity');
 
         foreach ($items as $itemData) {
             $itemId = $itemData['id'];
@@ -25,13 +26,14 @@ class OrderController extends Controller
 
             if ($item) {
                 $item = $item[0];
-                DB::insert("INSERT INTO orders (ShopId, ItemName, ItemPrice, Image, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)", [
+                DB::insert("INSERT INTO orders (ShopId, ItemName, ItemPrice, Image, created_at, updated_at,quantity) VALUES (?, ?, ?, ?, ?, ?,?)", [
                     $shopId,
                     $item->ItemName,
                     $item->ItemPrice,
                     $item->Image,
                     now(),
                     now(),
+                    $quantity,
                 ]);
             }
         }
