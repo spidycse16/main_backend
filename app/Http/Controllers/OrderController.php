@@ -26,7 +26,7 @@ class OrderController extends Controller
 
             if ($item) {
                 $item = $item[0];
-                DB::insert("INSERT INTO orders (ShopId, ItemName, ItemPrice, Image, created_at, updated_at,quantity) VALUES (?, ?, ?, ?, ?, ?,?)", [
+                DB::insert("INSERT INTO orders (ShopId, ItemName, ItemPrice, Image, created_at, updated_at,ItemQuantity) VALUES (?, ?, ?, ?, ?, ?,?)", [
                     $shopId,
                     $item->ItemName,
                     $item->ItemPrice,
