@@ -12,7 +12,7 @@ class Items extends Model
         'ShopId',
         'ItemName',
         'ItemPrice',
-        'Image'
-
+        'Image',
+        'ItemQuantity'
     ];
 }
