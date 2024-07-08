@@ -36,7 +36,19 @@ class OrderController extends Controller
             }
         }
 
-        Log::info('Items inserted into previous_orders');
+        Log::info('Items inserted into orders');
         return response()->json(['message' => 'Order confirmed and items moved to previous orders.'], 200);
+    }
+
+    public function orderedItems()
+    {
+        $products = DB::table('orders')->get();
+    
+      $response = [
+        'success' => true,
+        'data' => $products,
+      ];
+    
+      return response()->json($response, 200);
     }
 }
