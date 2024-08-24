@@ -17,7 +17,7 @@ Route:: middleware('auth:sanctum')->get('/user',function(Request $request){
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
-
+Route::get('user/{id}', [AuthController::class, 'getUserById']);
 //New Business 
 // Route::get('getBusinesses', function () {
 //     $controller = new StartNewBusinessController();
@@ -69,8 +69,14 @@ Route::post('/sell', [MarkerPlaceController::class, 'newSell']);
 //show item from the marketplace
 Route::get('/getProducts',[MarkerPlaceController::class,'getProducts']);
 //show item to seller what are the orders
-Route::get('/ordered-items',[OrderController::class,'orderedItems']);
+Route::get('/ordered-items/{shop_id}',[OrderController::class,'orderedItems']);
 //get all the shops
 Route::get('/getBusinesses',[BusinessController::class,'getBusinesses']);
+//get one shop
+Route::get('/getShopByUserId/{id}', [BusinessController::class, 'getShopByUserId']);
 //get items from item table
 Route::get('/getItems',[BusinessController::class,'getItems']);
+//get orders by user id
+Route::get('/my-orders/{user_id}',[OrderController::class,'myOrders']);
+//delte by shop id
+Route::delete('/delete-orders/{shopId}',[OrderController::class,'deleteOrders']);

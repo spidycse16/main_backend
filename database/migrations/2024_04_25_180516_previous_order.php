@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('ItemName');
             $table->string('ItemPrice');
             $table->string('Image');
-            $table->string('ItemQuantity');
             $table->timestamps();
         
             $table->foreign('ShopId')->references('id')->on('start_new_businesses');
